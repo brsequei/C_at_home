@@ -1,53 +1,16 @@
 void ft_rev_int_tab (int *tab, int size)
 {
 
-int i;
-i=size;
-int h;
-h=0;
-int tab_temp;
-tab_temp = calloc(10, sizeof(int));
-int  *ptr=tab;
+int i=0;
+int h=size-1; // inicializado a size - 1 pois o array começa no 0, ex se tiver 10 nao conseguimos tocar na 10ª posição
+int temp;
 
-while (i > 0)
+while (i < size /2 ) // o codigo troca o primeiro com o segundo, se fosse i<size ele ia trocar tudo 2 vezes ou seja voltar ao mesmo
 {
-    tab_temp[h] = tab[i];
-    i--;
-    h++;
+    temp = tab[i];
+    tab[i] = tab[h];
+    tab[h] = temp;
+    i++;
+    h--;
 }
-}
-
-
-#include <stdio.h>
-#include <stdlib.h>
-
-
-int	main(void)
-{
-	int *tab;
-	int counter;
-
-	tab = calloc(10, sizeof(int));
-	counter = 0;
-	while (counter < 10)
-	{
-		tab[counter] = counter;
-		counter++;
-	}
-	counter = 0;
-	while (counter < 10)
-	{
-		printf("%d ", tab[counter]);
-		counter++;
-	}
-	printf("\n");
-	ft_rev_int_tab(tab, 10);
-	counter = 0;
-	while (counter < 10)
-	{
-		printf("%d ", tab[counter]);
-		counter++;
-	}
-	printf("\n");
-	return (0);
 }
